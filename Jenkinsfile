@@ -1,10 +1,13 @@
 pipeline {
    agent any
+   tools{
+      maven 'mvn'
     stages{
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/jigyasumishra321/projectmain.git']]])
-                
+                sh "mvn install"
+                sh "mvn package -Production"
             }
         }
         stage('Build docker image'){
