@@ -1,8 +1,3 @@
-FROM ubuntu
-ENV DEBIAN_FRONTEND=noninteractive
-RUN apt-get update
-RUN apt-get install apache2 -y
-RUN apt-get install apache2-utils -y
-RUN apt-get clean
-EXPOSE 80
-CMD ["apache2ctl","-D","FOREGROUND"]
+FROM tomcat:8
+ADD target/bookstore-example-1.0-SNAPSHOT.war /usr/local/tomcat/webapps
+CMD ["catlina.sh", "run"]
