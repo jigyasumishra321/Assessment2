@@ -38,7 +38,6 @@ pipeline {
                       sh " ls -ltr "
                     sh "scp -r hl-charts ubuntu@100.26.43.116:"
                     script{
-                        try{
                             sh "ssh ubuntu@100.26.43.116 helm install k8schart hl-charts"
                         }
                         }
