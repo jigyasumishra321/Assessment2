@@ -31,17 +31,15 @@ pipeline {
         }
        stage('Deploy to k8s'){
             steps{
-               dir ('/var/lib/jenkins/workspace/project2') {
+               dir ('/var/lib/jenkins/workspace/project3') {
   
                    sshagent(['kuberneteslogin']) {
-                      sh " cd /var/lib/jenkins/workspace/project2 "
+                      sh " cd /var/lib/jenkins/workspace/project3 "
                       sh " ls -ltr "
-                    sh "scp -o StrictHostKeyChecking=no deploymentservice.yml ubuntu@100.26.43.116:"
+                    sh "scp -r hl-charts ubuntu@100.26.43.116:"
                     script{
                         try{
-                            sh "ssh ubuntu@100.26.43.116 kubectl apply -f deploymentservice.yml"
-                        }catch(error){
-                            sh "ssh ubuntu@100.26.43.116 kubectl create -f deploymentservice.yml"
+                            sh "ssh ubuntu@100.26.43.116 helm install k8schart hl-charts"
                         }
                         }
                     }
