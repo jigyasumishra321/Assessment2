@@ -7,7 +7,7 @@ pipeline {
         stage('Build Maven'){
             steps{
                 checkout([$class: 'GitSCM', branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[credentialsId: 'git', url: 'https://github.com/jigyasumishra321/projectmain.git']]])
-                sh "mvn install"
+                sh "mvn clean install"
                 sh "mvn package -Production"
             }
         }
