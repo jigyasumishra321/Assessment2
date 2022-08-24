@@ -34,7 +34,7 @@ pipeline {
             steps{
                dir ('/var/lib/jenkins/workspace/project3') {
   
-                   sshagent(['kuberneteslogin']) {
+                   sshagent(['kuberneteslogins']){
                       sh " cd /var/lib/jenkins/workspace/project3 "
                       sh " ls -ltr "
                     sh "scp -r hl-charts ubuntu@54.242.114.54:"
