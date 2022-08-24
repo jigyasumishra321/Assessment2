@@ -14,6 +14,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
+                   sh 'chmod 777 /var/run/docker.sock'
                     sh 'docker build -t jigyasumishra321/nginx .'
                 }
             }
