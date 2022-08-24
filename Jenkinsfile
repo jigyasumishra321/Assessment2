@@ -33,12 +33,12 @@ pipeline {
             steps{
                dir ('/var/lib/jenkins/workspace/project3') {
   
-                   sshagent(['kuberneteslogins']) {
+                   sshagent(['kuberneteslogin']) {
                       sh " cd /var/lib/jenkins/workspace/project3 "
                       sh " ls -ltr "
-                    sh "scp -r hl-charts ubuntu@100.26.43.116:"
+                    sh "scp -r hl-charts ubuntu@54.242.114.54:"
                     script{
-                            sh "ssh ubuntu@100.26.43.116 helm install k8schart hl-charts"
+                            sh "ssh ubuntu@54.242.114.54 helm install k8schart hl-charts"
                         }
                         }
                     }
