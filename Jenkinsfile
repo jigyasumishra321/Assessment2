@@ -37,7 +37,7 @@ pipeline {
                    sshagent(['kuberneteslogin']) {
                       sh " cd /var/lib/jenkins/workspace/project3 "
                       sh " ls -ltr "
-                    sh "scp -o StrictHostKeyChecking=no k8s-chart ubuntu@3.85.232.35:"
+                    sh "scp -r k8s-chart ubuntu@3.85.232.35:"
                     script{
                             sh "ssh ubuntu@3.85.232.35 helm install k8schart k8s-chart"
                         }
