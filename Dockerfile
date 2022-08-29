@@ -8,6 +8,9 @@ RUN apt-get update && apt-get -y upgrade
 
 WORKDIR /usr/local/tomcat/webapps
 
+ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
+ADD tomcat-users.xml /usr/local/tomcat/conf
+
 RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
 
 VOLUME /var/log/tomcat
