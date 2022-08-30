@@ -1,10 +1,10 @@
-FROM tomcat:8-jre11
+FROM tomcat:7
 
 RUN apt-get update && apt-get -y upgrade
 
 WORKDIR /usr/local/tomcat/webapps
 
-RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
+#RUN mv /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps/
 
 ADD context.xml /usr/local/tomcat/webapps/manager/META-INF/context.xml
 
