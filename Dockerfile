@@ -1,4 +1,4 @@
-FROM tomcat:8.5.11
+FROM tomcat:8-jre11
 
 RUN apt-get update && apt-get -y upgrade
 
