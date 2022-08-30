@@ -14,7 +14,7 @@ pipeline {
         stage('Build docker image'){
             steps{
                 script{
-                   
+                    sh 'docker system prune -a -f '
                     sh 'docker build -t jigyasumishra321/nginx .'
                 }
             }
